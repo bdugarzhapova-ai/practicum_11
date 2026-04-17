@@ -1,0 +1,45 @@
+# Список знаков препинания, которые нужно удалить
+punctuation = ".,!?;:()[]{}'\"<>/@#$%^&*-_=+"
+
+# Читаем текст до пустой строки
+print("Введите текст (пустая строка - конец ввода):")
+lines = []
+while True:
+    line = input()
+    if line == "":
+        break
+    lines.append(line)
+
+# Объединяем все строки в один текст
+text = " ".join(lines)
+
+# Удаляем знаки препинания
+for p in punctuation:
+    text = text.replace(p, "")
+
+# Приводим к нижнему регистру и разбиваем на слова
+words = text.lower().split()
+
+# Считаем частоту слов и запоминаем порядок появления
+word_count = {}      # слово -> частота
+word_order = []      # список слов в порядке первого появления
+
+for word in words:
+    if word not in word_count:
+        word_count[word] = 0
+        word_order.append(word)
+    word_count[word] += 1
+
+# Сортируем слова по частоте (убывание), сохраняя порядок при равной частоте
+# Создаём список из (слово, частота, индекс_появления)
+words_with_info = []
+for i, word in enumerate(word_order):
+    words_with_info.append((word, word_count[word], i))
+
+# Сортируем: сначала по частоте (от большего к меньшему), затем по индексу
+words_with_info.sort(key=lambda x: (-x[1], x[2]))
+
+# Выводим результат
+print("\nРезультат:")
+for word, count, index in words_with_info:
+    print(word)
