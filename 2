@@ -1,0 +1,17 @@
+# Ввод чисел в одной строке через пробел
+str_numbers = input("Введите целые числа через пробел: ")
+parts = str_numbers.split()
+numbers = []
+for part in parts:
+    numbers.append(int(part))
+
+# Проверка, что в списке есть значение 3 (по условию оно обязательно есть)
+if 3 in numbers:
+    # Удаляем все вхождения числа 3
+    new_list = []
+    for number in numbers:
+        if number != 3:
+            new_list.append(number)
+    print(f"Новый список: {new_list}")
+else:
+    print("В исходном списке нет значения 3 ")
