@@ -1,0 +1,15 @@
+# Получаем строку от пользователя
+text = input("Введите предложение: ")
+
+# Знаки препинания для удаления
+punctuation = ".,!?;:()[]{}'\"<>/@#$%^&*"
+
+# Удаляем знаки препинания
+for p in punctuation:
+    text = text.replace(p, "")
+
+# Разбиваем на слова и получаем уникальные
+words = text.split()
+unique_words = list(set(words))
+
+print(unique_words)
