@@ -1,0 +1,17 @@
+# Вводим строку с числами
+numbers_str = input("Введите целые числа: ")
+
+# Преобразуем в список целых чисел
+numbers = list(map(int, numbers_str.split()))
+
+# Вычисляем суммы
+sum_even = 0  # сумма четных
+sum_odd = 0   # сумма нечетных
+
+for num in numbers:
+    if num % 2 == 0:
+        sum_even += num
+    else:
+        sum_odd += num
+
+print(sum_even, sum_odd)
