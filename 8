@@ -1,0 +1,19 @@
+def sort_string(s):
+    """
+    Преобразует строку в список символов, сортирует его и возвращает обратно строку
+    """
+    # Преобразуем строку в список символов
+    chars = list(s)
+
+    # Сортируем список
+    chars.sort()
+
+    # Преобразуем список обратно в строку
+    result = ''.join(chars)
+
+    return result
+
+
+input_string = input("Введите строку: ")
+sorted_string = sort_string(input_string)
+print(sorted_string)
