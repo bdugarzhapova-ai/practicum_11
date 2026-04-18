@@ -1,0 +1,36 @@
+print("Введите элементы первого списка через пробел:")
+lst1_str = input()
+print("Введите элементы второго списка через пробел:")
+lst2_str = input()
+print("Введите начальный индекс:")
+start = int(input())
+print("Введите конечный индекс:")
+end = int(input())
+
+# Преобразуем строки в списки
+lst1 = []
+for x in lst1_str.split():
+    lst1.append(int(x))
+
+lst2 = []
+for x in lst2_str.split():
+    lst2.append(int(x))
+
+# Создаём список элементов, которые нужно переместить
+elements_to_move = []
+for i in range(start, end + 1):
+    elements_to_move.append(lst1[i])
+
+# Разворачиваем этот список
+elements_to_move.reverse()
+
+# Удаляем элементы из lst1
+for i in range(end, start - 1, -1):
+    lst1.pop(i)
+
+# Добавляем элементы в конец lst2
+for element in elements_to_move:
+    lst2.append(element)
+
+print(f"lst1 = {lst1}")
+print(f"lst2 = {lst2}")
