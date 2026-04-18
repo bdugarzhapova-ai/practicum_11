@@ -1,0 +1,24 @@
+# Ввод данных
+lst_input = input("Введите элементы списка через пробел: ")
+command = input("Введите команду (R5 или L3): ")
+
+# Преобразуем строку в список целых чисел
+lst = list(map(int, lst_input.split()))
+
+# Определяем направление и количество позиций
+direction = command[0]
+k = int(command[1:])
+
+# Выполняем циклический сдвиг
+if direction == 'R':  # Сдвиг вправо
+    k = k % len(lst)  # Если k больше длины списка, берём остаток
+    if k != 0:
+        lst = lst[-k:] + lst[:-k]
+elif direction == 'L':  # Сдвиг влево
+    k = k % len(lst)
+    if k != 0:
+        lst = lst[k:] + lst[:k]
+else:
+    print("Неверная команда")
+
+print(lst)
